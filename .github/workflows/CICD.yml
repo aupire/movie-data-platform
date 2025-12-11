@@ -9,9 +9,14 @@ on:
 jobs:
   ci:
     runs-on: ubuntu-latest
-
     steps:
-      - uses: actions/checkout@v3
+      - name: 'action checkout'
+        uses: actions/checkout@v3
+
+      - name: 'pip audit'
+        uses: pypa/gh-action-pip-audit@v1.0.0
+        with:
+          inputs: requirements.txt
 
       - name: Set up Python
         uses: actions/setup-python@v4
@@ -21,18 +26,16 @@ jobs:
       - name: Install dependencies
         run: pip install -r requirements.txt
 
-      - name: Lint
+      - name: Black & Ruff
         run: |
           black --check .
           ruff check .
 
       - name: Run tests
-        run: pytest --cov=src
+        run: pytest --cov=utils
 
       - name: Security checks
-        run: |
-          pip-audit
-          bandit -r src
+        run: bandit -r src
 
       # - name: Build Docker image
       #   run: docker build -t ghcr.io/${{ github.repository }}:${{ github.sha }} .

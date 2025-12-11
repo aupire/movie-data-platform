@@ -1,6 +1,6 @@
 import pytest
 from pydantic import ValidationError
-from config.settings import Settings
+from src.config.settings import Settings
 
 
 def test_settings_loads_successfully():

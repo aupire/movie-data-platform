@@ -1,5 +1,5 @@
 from unittest.mock import patch
-from utils import email
+from src.utils import email
 
 
 def test_send_email():
