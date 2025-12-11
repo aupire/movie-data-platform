@@ -32,6 +32,14 @@ jobs:
           black --check .
           ruff check .
 
+      - name: Create .env file
+        run: |
+          echo "SMTP_HOST=${{ secrets.SMTP_HOST }}" >> .env
+          echo "SMTP_PORT=${{ secrets.SMTP_PORT }}" >> .env
+          echo "SMTP_USER=${{ secrets.SMTP_USER }}" >> .env
+          echo "SMTP_PASSWORD=${{ secrets.SMTP_PASSWORD }}" >> .env
+
+
       - name: Run tests
         run: pytest --cov=config --cov=utils
 
