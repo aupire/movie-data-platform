@@ -30,11 +30,11 @@ jobs:
       #     inputs: requirements.txt
       #     no-deps: true
 
-      - name: pip audit
-        run: pip-audit -r ./requirements.txt
-
       - name: Install dependencies
         run: pip install -r requirements.txt
+
+      - name: pip audit
+        run: pip-audit -r ./requirements.txt
 
       - name: Black & Ruff
         run: |
