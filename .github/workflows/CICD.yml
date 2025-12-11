@@ -33,14 +33,14 @@ jobs:
 
       - name: Black & Ruff
         run: |
-          black --check .
-          ruff check .
+          python -m black --check .
+          python -m ruff check .
 
       - name: Run tests
-        run: pytest --cov=utils
+        run: python -m pytest --cov=utils
 
       - name: Security checks
-        run: bandit -r src
+        run: python -m bandit -r src
 
       # - name: Build Docker image
       #   run: docker build -t ghcr.io/${{ github.repository }}:${{ github.sha }} .
