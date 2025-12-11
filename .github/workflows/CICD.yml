@@ -18,19 +18,14 @@ jobs:
         with:
           python-version: "3.10"
 
-      - name: 'pip audit'
-        uses: pypa/gh-action-pip-audit@v1.1.0
-        with:
-          inputs: requirements.txt
-          no-deps: true
-
       # - name: 'pip audit'
-      #   uses: pypa/gh-action-pip-audit@v1.0.0
+      #   uses: pypa/gh-action-pip-audit@v1.1.0
       #   with:
       #     inputs: requirements.txt
+      #     no-deps: true
 
-      # - name: Install dependencies
-      #   run: pip install -r requirements.txt
+      - name: Install dependencies
+        run: pip install -r requirements.txt
 
       - name: Black & Ruff
         run: |
@@ -42,6 +37,9 @@ jobs:
 
       - name: Security checks
         run: bandit -r src
+
+      - name: pip audit
+        run: pip_audit
 
       # - name: Build Docker image
       #   run: docker build -t ghcr.io/${{ github.repository }}:${{ github.sha }} .
