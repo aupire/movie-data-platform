@@ -22,6 +22,7 @@ jobs:
         uses: pypa/gh-action-pip-audit@v1.1.0
         with:
           inputs: requirements.txt
+          require-hashes: true
 
       # - name: 'pip audit'
       #   uses: pypa/gh-action-pip-audit@v1.0.0
@@ -33,14 +34,14 @@ jobs:
 
       - name: Black & Ruff
         run: |
-          python -m black --check .
-          python -m ruff check .
+          black --check .
+          ruff check .
 
       - name: Run tests
-        run: python -m pytest --cov=utils
+        run: pytest --cov=utils
 
       - name: Security checks
-        run: python -m bandit -r src
+        run: bandit -r src
 
       # - name: Build Docker image
       #   run: docker build -t ghcr.io/${{ github.repository }}:${{ github.sha }} .
