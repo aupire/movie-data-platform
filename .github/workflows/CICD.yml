@@ -33,7 +33,7 @@ jobs:
           ruff check .
 
       - name: Run tests
-        run: pytest --cov=src
+        run: pytest --cov=config --cov=utils
 
       - name: Security checks
         run: bandit -r .
