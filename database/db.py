@@ -18,7 +18,6 @@ def selectFromDb():
         cur.execute("SELECT * from films;")
         print(cur.fetchone())
         print(cur.fetchone())
-        print(cur.fetchone())
 
         cur.close()
         conn.close()
