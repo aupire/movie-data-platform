@@ -1,5 +1,5 @@
 import psycopg2
-from config.db import settings
+from config.settings import settings
 
 def selectFromDb():
     
