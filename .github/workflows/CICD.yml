@@ -48,13 +48,13 @@ jobs:
           ruff check .
 
       - name: Run tests
-        run: pytest
+        run: pytest --cov=config --cov=utils --cov=database tests/
 
       - name: Security checks
         run: bandit -r . -x ./tests/
       
-      - name: final test sending email
-        run : python main.py
+      - name: final launch cheapest instance
+        run : python ./devops/launch_instance.py
 
       # - name: Build Docker image
       #   run: docker build -t ghcr.io/${{ github.repository }}:${{ github.sha }} .
