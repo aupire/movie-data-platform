@@ -4,6 +4,7 @@ import time
 from utils.logger import logging
 from datetime import datetime, timezone
 
+
 def launch_instance():
 
     INSTANCE_TYPE = "t4g.nano"
@@ -66,7 +67,6 @@ def launch_instance():
 
     instance_id = response["Instances"][0]["InstanceId"]
     logging.info(f"Instance lancée : {instance_id}")
-
 
     time.sleep(10)
 
