@@ -38,8 +38,8 @@ for region in regions:
                     "nat_gateway": False,
                     "timestamp": h["Timestamp"].isoformat(),
                 }
-    except Exception:
-        continue
+    except Exception as e:
+        logging.warning(f"Error with the email : {e}")
 
 logging.info(json.dumps(lowest, indent=2))
 
