@@ -1,5 +1,4 @@
 from devops import launch_instance
-import time
 
 launch_instance.launch_instance()
 # for i in range(5):
