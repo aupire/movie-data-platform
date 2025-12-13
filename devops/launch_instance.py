@@ -9,8 +9,7 @@ PRODUCT_DESCRIPTION = "Linux/UNIX"
 
 ec2_global = boto3.client("ec2", region_name="us-east-1")
 regions = [
-    r["RegionName"]
-    for r in ec2_global.describe_regions(AllRegions=True)["Regions"]
+    r["RegionName"] for r in ec2_global.describe_regions(AllRegions=True)["Regions"]
 ]
 
 lowest = None
@@ -22,7 +21,7 @@ for region in regions:
             InstanceTypes=[INSTANCE_TYPE],
             ProductDescriptions=[PRODUCT_DESCRIPTION],
             StartTime=datetime.now(timezone.utc),
-            MaxResults=10
+            MaxResults=10,
         )
 
         for h in resp.get("SpotPriceHistory", []):
@@ -37,11 +36,11 @@ for region in regions:
                     "ipv6": True,
                     "elastic_ip": False,
                     "nat_gateway": False,
-                    "timestamp": h["Timestamp"].isoformat()
+                    "timestamp": h["Timestamp"].isoformat(),
                 }
     except Exception:
         continue
-    
+
 logging.info(json.dumps(lowest, indent=2))
 
 region = lowest["region"]
@@ -60,7 +59,7 @@ response = ec2.run_instances(
     InstanceType=instance_type,
     Placement={"AvailabilityZone": az},
     MinCount=1,
-    MaxCount=1
+    MaxCount=1,
 )
 
 instance_id = response["Instances"][0]["InstanceId"]
