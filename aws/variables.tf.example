@@ -1,0 +1,53 @@
+variable "instance_name" {
+  description = "Value of the EC2 instance's Name tag."
+  type        = string
+  default     = ""
+}
+
+variable "instance_ami" {
+  description = "Value of the EC2 ami id"
+  type        = string
+  default     = ""
+}
+
+variable "instance_type" {
+  description = "The EC2 instance's type."
+  type        = string
+  default     = ""
+}
+
+variable "aws_security_group_name" {
+  description = "Name of the security group"
+  type        = string
+  default     = ""
+}
+
+variable "ipv6_ssh_connection" {
+  description = "The ipv6 adresse to connect with ssh"
+  type        = string
+  default     = ""
+}
+
+variable "region_aws_favorite" {
+  description = "The favorite region of aws"
+  type        = string
+  default     = ""
+}
+
+variable "subnet_aws_favorite" {
+  description = "The favorite subnet of aws"
+  type        = string
+  default     = ""
+}
+
+variable "key_name" {
+  description = "Key name for ssh connection"
+  type        = string
+  default     = ""
+}
+
+variable "vpc_name" {
+  description = "Name of the vpc"
+  type        = string
+  default     = ""
+}
